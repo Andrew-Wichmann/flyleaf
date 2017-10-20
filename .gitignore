@@ -3,3 +3,4 @@ bookclub/bookclub/secretkey.py
 *.pyc
 migrations
 activate
+db.sqlite3
