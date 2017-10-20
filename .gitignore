@@ -1,0 +1,5 @@
+django/
+bookclub/bookclub/secretkey.py
+*.pyc
+migrations
+activate
