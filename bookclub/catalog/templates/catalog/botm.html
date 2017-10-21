@@ -1,0 +1,16 @@
+{% extends "catalog/base.html" %}
+{% block content %}
+<div class="container h-100">
+    <div class="row">
+        <h1 class="my-auto">Book of the Month</h1>
+    </div>
+    <div class="row">
+        <h1 class="col-lg-8">{{ botm.title }}</h1>
+        <h3 class="col-lg-4">by {{ botm.author.first_name }} {{ botm.author.last_name }}</h3>
+    </div>
+    <div class="row"><h1>Other Books</h1></div>
+    {% for book in other_books %}
+    <div class="row"><h3>{{ book.title }}</h3></div>
+    {% endfor %}
+</div>
+{% endblock %}

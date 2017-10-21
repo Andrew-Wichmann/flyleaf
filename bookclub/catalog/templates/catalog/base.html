@@ -12,8 +12,13 @@
 
     <title>Flyleaf - Fall in Love with Books Again</title>
 
+    <link rel="icon" type="image/png" href="{% static 'test.ico' %}">
+
     <!-- Bootstrap core CSS -->
     <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Custom Flyleaf CSS -->
+    <link href="{% static 'flyleaf/css/index.css' %}" rel="stylesheet">
 
     <!-- Custom fonts for this template -->
     <link rel="stylesheet" href="{% static 'vendor/font-awesome/css/font-awesome.min.css' %}">
@@ -32,31 +37,35 @@
 
   <body id="page-top">
 
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-      <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="#page-top">Flyleaf Bookclub</a>
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          Menu
-          <i class="fa fa-bars"></i>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#download">Download</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#features">Features</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
-            </li>
-          </ul>
-        </div>
+  {% block navbar %}
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand js-scroll-trigger" href="{% url 'catalog:index' %}#page-top">Flyleaf Bookclub</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      Menu
+      <i class="fa fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="{% url 'catalog:index' %}#download">Download</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="{% url 'catalog:botm' %}">Book of the Month</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="{% url 'catalog:index' %}#contact">Contact</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="{% url 'catalog:signup' %}">Sign Up</a>
+          </li>
+        </ul>
       </div>
-    </nav>
-
-    {% block content %}{% endblock %}
+    </div>
+  </nav>
+  {% endblock %}
+  {% block content %}{% endblock %}
 
     <footer>
         <div class="container">

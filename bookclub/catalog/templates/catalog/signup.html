@@ -1,8 +1,14 @@
+{% extends "catalog/base.html" %}
 {% block content %}
-  <h2>Sign up</h2>
-  <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Sign up</button>
-  </form>
+<header class="masthead">
+  <div class="container h-100">
+    <div class="row h-100">
+      <form method="post" class="col-lg-12 my-auto">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Sign up</button>
+      </form>
+    </div>
+  </div>
+</header>
 {% endblock %}

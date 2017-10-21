@@ -1,8 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views import generic
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
-from django.shortcuts import render, redirect
 
 from .models import Book
 
@@ -13,7 +12,17 @@ class IndexView(generic.TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(IndexView, self).get_context_data(**kwargs)
-        context['book_of_the_month'] = Book.objects.first()
+        return context
+
+class BookOfTheMonthView(generic.ListView):
+    model = Book
+    template_name = 'catalog/botm.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(BookOfTheMonthView, self).get_context_data(**kwargs)
+        botm = Book.objects.first()
+        context['botm'] = botm
+        context['other_books'] = Book.objects.exclude(id=botm.id)
         return context
 
 def signup(request):
@@ -25,7 +34,7 @@ def signup(request):
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_password)
             login(request, user)
-            return redirect('index')
+            return redirect('catalog:index')
     else:
         form = UserCreationForm()
     return render(request, 'catalog/signup.html', {'form': form})
