@@ -1,4 +1,6 @@
 django/
+env/
+
 bookclub/bookclub/secretkey.py
 *.pyc
 migrations
